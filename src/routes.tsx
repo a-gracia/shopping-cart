@@ -1,17 +1,16 @@
-import App from "./App";
-import Profile from "./routes/Profile";
 import ErrorPage from "./routes/ErrorPage";
 import { Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
+import Products from "./routes/Products";
+import Cart from "./routes/Cart";
 
 const routes = () => {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />}>
-          <Route path=":name" element={<Profile />} />
-        </Route>
+        <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
