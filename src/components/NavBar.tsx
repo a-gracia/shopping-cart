@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ cartItems }) {
   return (
     <>
       <nav>
@@ -12,7 +12,7 @@ function NavBar() {
             <Link to="products">Products</Link>
           </li>
           <li>
-            <Link to="cart">Cart (x)</Link>
+            <Link to="cart">Cart ({Object.keys(cartItems).length})</Link>
           </li>
         </ul>
       </nav>

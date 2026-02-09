@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "../styles/productCard.module.css";
 
 function ProductCard({
@@ -8,6 +9,7 @@ function ProductCard({
   price,
   rating,
   title,
+  addCartItem,
 }: {
   category: string;
   description: string;
@@ -20,6 +22,7 @@ function ProductCard({
   };
   title: string;
 }) {
+  const [quantity, setQuantity] = useState(0);
   return (
     <div className={styles.card}>
       <h2>{title}</h2>
@@ -30,8 +33,23 @@ function ProductCard({
       <p>
         Rate: {rating.rate} ({rating.count})
       </p>
-      <input type="number" id="quantity" name="quantity" min="1" max="10" />
-      <button>Add to cart</button>
+      <input
+        type="number"
+        id="quantity"
+        name="quantity"
+        min="1"
+        max="10"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+      />
+      <button
+        onClick={(e) => {
+          addCartItem(e, id, quantity);
+          setQuantity(0);
+        }}
+      >
+        Add to cart
+      </button>
     </div>
   );
 }

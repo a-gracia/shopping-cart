@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 import useProductList from "../helpers/useProductList";
 import styles from "../styles/productGallery.module.css";
 
-function ProductGallery() {
+function ProductGallery({ addCartItem }) {
   const { productList, error, loading } = useProductList();
 
   if (loading) return <p>Loading...</p>;
@@ -11,7 +11,7 @@ function ProductGallery() {
   return (
     <div className={styles.gallery}>
       {productList.map((item) => (
-        <ProductCard key={item.id} {...item} />
+        <ProductCard key={item.id} {...item} addCartItem={addCartItem} />
       ))}
     </div>
   );
