@@ -14,9 +14,16 @@ const App = () => {
       ...cartItems,
       [crypto.randomUUID()]: { id: id, quantity: quantity },
     });
-
-    console.log({ id: id, quantity: quantity });
   };
+
+  const setItemQuantity = (id, quantity) => {
+    setCartItems({
+      ...cartItems,
+      [id]: { ...cartItems[id], quantity: quantity },
+    });
+  };
+
+  const [catalog, setCatalog] = useState({});
 
   return (
     <>
@@ -26,9 +33,24 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route
           path="/products"
-          element={<Products cartItems={cartItems} addCartItem={addCartItem} />}
+          element={
+            <Products
+              cartItems={cartItems}
+              addCartItem={addCartItem}
+              setCatalog={setCatalog}
+            />
+          }
         />
-        <Route path="/cart" element={<Cart cartItems={cartItems} />} />
+        <Route
+          path="/cart"
+          element={
+            <Cart
+              cartItems={cartItems}
+              setItemQuantity={setItemQuantity}
+              catalog={catalog}
+            />
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
