@@ -23,6 +23,13 @@ const App = () => {
     });
   };
 
+  const removeCartItem = (id) => {
+    const newItems = { ...cartItems };
+    console.log(id);
+    delete newItems[id];
+    setCartItems(newItems);
+  };
+
   const [catalog, setCatalog] = useState({});
 
   return (
@@ -48,6 +55,7 @@ const App = () => {
               cartItems={cartItems}
               setItemQuantity={setItemQuantity}
               catalog={catalog}
+              removeCartItem={removeCartItem}
             />
           }
         />

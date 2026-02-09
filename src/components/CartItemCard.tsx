@@ -1,7 +1,13 @@
 import { useState } from "react";
 import useProductDetails from "../helpers/useProductDetails";
 
-function CartItemCard({ id, quantity, details, setItemQuantity }) {
+function CartItemCard({
+  id,
+  quantity,
+  details,
+  setItemQuantity,
+  removeCartItem,
+}) {
   return (
     <div>
       <img src={details.image} alt="" />
@@ -20,7 +26,7 @@ function CartItemCard({ id, quantity, details, setItemQuantity }) {
         />
       </p>
       <p>Total price: ${(quantity * details.price).toFixed(2)}</p>
-      <button>Remove</button>
+      <button onClick={(e) => removeCartItem(id)}>Remove</button>
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import CartItemCard from "../components/CartItemCard";
 import useProductDetails from "../helpers/useProductDetails";
 
-const Cart = ({ cartItems, setItemQuantity, catalog }) => {
+const Cart = ({ cartItems, setItemQuantity, catalog, removeCartItem }) => {
   // Generate item cards
   const itemsDOM = Object.entries(cartItems).map((item) => {
     const productId = item[1].id;
@@ -17,6 +17,7 @@ const Cart = ({ cartItems, setItemQuantity, catalog }) => {
         quantity={item[1].quantity}
         details={productDetails}
         setItemQuantity={setItemQuantity}
+        removeCartItem={removeCartItem}
       />
     );
   });
