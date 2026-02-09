@@ -22,7 +22,7 @@ function ProductCard({
   };
   title: string;
 }) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   return (
     <div className={styles.card}>
       <h2>{title}</h2>
@@ -45,7 +45,7 @@ function ProductCard({
       <button
         onClick={(e) => {
           addCartItem(e, id, quantity);
-          setQuantity(0);
+          setQuantity(1);
         }}
       >
         Add to cart

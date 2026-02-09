@@ -11,7 +11,16 @@ const App = () => {
 
   const addCartItem = (e, id, quantity) => {
     if (quantity > 0) {
-      setCartItems([...cartItems, { id: id, quantity: quantity }]);
+      const index = cartItems.findIndex((item) => item.id === id);
+
+      if (index === -1) {
+        setCartItems([...cartItems, { id: id, quantity: quantity }]);
+      } else {
+        const currentQuantity = cartItems[index].quantity;
+        const newQuantity = +currentQuantity + +quantity;
+
+        setItemQuantity(id, newQuantity);
+      }
     }
   };
 
