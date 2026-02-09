@@ -32,10 +32,10 @@ const Cart = ({ cartItems, setItemQuantity, catalog, removeCartItem }) => {
   }, 0);
 
   return (
-    <div>
+    <div className="container">
       <h1>Cart</h1>
       <p>Total order: ${orderTotal.toFixed(2)}</p>
-      {itemsDOM}
+      <div className="orderItems">{itemsDOM}</div>
     </div>
   );
 };

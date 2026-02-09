@@ -11,7 +11,7 @@ const Products = ({ cartItems, addCartItem, setCatalog }) => {
   if (error) return <p>A network error was encountered</p>;
 
   return (
-    <div>
+    <div className="container">
       <h1>Products</h1>
       <div className={styles.gallery}>
         {productList.map((item) => (

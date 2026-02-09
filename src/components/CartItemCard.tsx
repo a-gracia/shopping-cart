@@ -1,3 +1,5 @@
+import styles from "../styles/cartItemCard.module.css";
+
 function CartItemCard({
   id,
   quantity,
@@ -6,7 +8,7 @@ function CartItemCard({
   removeCartItem,
 }) {
   return (
-    <div>
+    <div className={styles.orderCard}>
       <img src={details.image} alt="" />
       <p>Title: {details.title}</p>
       <p>Unit price: ${details.price}</p>

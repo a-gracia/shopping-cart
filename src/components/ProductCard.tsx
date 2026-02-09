@@ -25,10 +25,9 @@ function ProductCard({
   const [quantity, setQuantity] = useState(1);
   return (
     <div className={styles.card}>
-      <h2>{title}</h2>
-      <h3>{category}</h3>
+      <h3>{title}</h3>
       <img src={image} alt="" />
-      <p>{description}</p>
+
       <p>${price}</p>
       <p>
         Rate: {rating.rate} ({rating.count})
