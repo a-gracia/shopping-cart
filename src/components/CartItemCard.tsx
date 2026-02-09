@@ -1,6 +1,3 @@
-import { useState } from "react";
-import useProductDetails from "../helpers/useProductDetails";
-
 function CartItemCard({
   id,
   quantity,
@@ -19,7 +16,7 @@ function CartItemCard({
           type="number"
           name="quantity"
           id="quantity"
-          min="0"
+          min="1"
           max="10"
           value={quantity}
           onChange={(e) => setItemQuantity(id, e.target.value)}

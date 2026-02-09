@@ -12,7 +12,7 @@ function NavBar({ cartItems }) {
             <Link to="products">Products</Link>
           </li>
           <li>
-            <Link to="cart">Cart ({Object.keys(cartItems).length})</Link>
+            <Link to="cart">Cart ({cartItems.length})</Link>
           </li>
         </ul>
       </nav>

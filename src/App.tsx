@@ -7,26 +7,28 @@ import Cart from "./routes/Cart";
 import { useState } from "react";
 
 const App = () => {
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState([]);
 
   const addCartItem = (e, id, quantity) => {
-    setCartItems({
-      ...cartItems,
-      [crypto.randomUUID()]: { id: id, quantity: quantity },
-    });
+    if (quantity > 0) {
+      setCartItems([...cartItems, { id: id, quantity: quantity }]);
+    }
   };
 
   const setItemQuantity = (id, quantity) => {
-    setCartItems({
-      ...cartItems,
-      [id]: { ...cartItems[id], quantity: quantity },
-    });
+    const elementIndex = cartItems.findIndex((item) => item.id === id);
+
+    let updatedCartItems = [...cartItems];
+    updatedCartItems[elementIndex] = {
+      ...updatedCartItems[elementIndex],
+      quantity: quantity,
+    };
+
+    setCartItems(updatedCartItems);
   };
 
   const removeCartItem = (id) => {
-    const newItems = { ...cartItems };
-    console.log(id);
-    delete newItems[id];
+    const newItems = cartItems.filter((item) => item.id != id);
     setCartItems(newItems);
   };
 

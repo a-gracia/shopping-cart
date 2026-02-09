@@ -1,20 +1,18 @@
-import { useParams } from "react-router";
 import CartItemCard from "../components/CartItemCard";
-import useProductDetails from "../helpers/useProductDetails";
 
 const Cart = ({ cartItems, setItemQuantity, catalog, removeCartItem }) => {
   // Generate item cards
-  const itemsDOM = Object.entries(cartItems).map((item) => {
-    const productId = item[1].id;
+  const itemsDOM = cartItems.map((item) => {
+    const productId = item.id;
     const productDetails = catalog.find(
       (catalogItem) => catalogItem.id === productId,
     );
 
     return (
       <CartItemCard
-        key={item[0]}
-        id={item[0]}
-        quantity={item[1].quantity}
+        key={item.id}
+        id={item.id}
+        quantity={item.quantity}
         details={productDetails}
         setItemQuantity={setItemQuantity}
         removeCartItem={removeCartItem}
@@ -23,20 +21,20 @@ const Cart = ({ cartItems, setItemQuantity, catalog, removeCartItem }) => {
   });
 
   // Calculate order total
-  const orderTotal = Object.entries(cartItems).reduce((total, item) => {
-    const productId = item[1].id;
+  const orderTotal = cartItems.reduce((total, item) => {
+    const productId = item.id;
     const productDetails = catalog.find(
       (catalogItem) => catalogItem.id === productId,
     );
     const price = productDetails?.price ?? 0;
 
-    return total + item[1].quantity * price;
+    return total + item.quantity * price;
   }, 0);
 
   return (
     <div>
       <h1>Cart</h1>
-      <p>Total: ${orderTotal.toFixed(2)}</p>
+      <p>Total order: ${orderTotal.toFixed(2)}</p>
       {itemsDOM}
     </div>
   );
